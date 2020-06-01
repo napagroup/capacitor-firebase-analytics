@@ -14,14 +14,14 @@ import FirebaseAnalytics
 public class CapacitorFirebaseAnalytics: CAPPlugin {
 
     var fbase: FirebaseApp? = nil;
-    
+
     public override func load() {
         if (FirebaseApp.app() == nil) {
             FirebaseApp.configure();
             fbase = FirebaseApp.app()
         }
     }
-    
+
     @objc func setScreenName(_ call: CAPPluginCall) {
         let screenName = call.getString("screenName");
         let screenClassOverride = call.getString("screenClassOverride");
@@ -36,7 +36,7 @@ public class CapacitorFirebaseAnalytics: CAPPlugin {
             return
         }
     }
-    
+
     @objc func setUserProperty(_ call: CAPPluginCall) {
         let value = call.getString("value");
         let name = call.getString("name");
@@ -51,7 +51,7 @@ public class CapacitorFirebaseAnalytics: CAPPlugin {
             return
         }
     }
-    
+
     @objc func logEvent(_ call: CAPPluginCall) {
                 let name = call.getString("name");
                 let parameters = call.getObject("parameters") ?? nil;
@@ -66,10 +66,26 @@ public class CapacitorFirebaseAnalytics: CAPPlugin {
             return
         }
     }
-    
+
+    @objc func setAnalyticsCollectionEnabled(_ call: CAPPluginCall) {
+        let enabled = call.getBoolean("enabled");
+
+        if userId != nil {
+            DispatchQueue.main.async {
+                Analytics.setAnalyticsCollectionEnabled(enabled);
+                call.success();
+            }
+        } else {
+            call.error("You must pass enabled.")
+            self.bridge.modulePrint(self, "enabled was not passed.")
+            return
+        }
+
+    }
+
     @objc func setUserId(_ call: CAPPluginCall) {
         let userId = call.getString("userId");
-        
+
         if userId != nil {
             DispatchQueue.main.async {
                 Analytics.setUserID(userId);
@@ -80,16 +96,16 @@ public class CapacitorFirebaseAnalytics: CAPPlugin {
             self.bridge.modulePrint(self, "A userId was not passed.")
             return
         }
-        
+
     }
-    
+
     @objc func appInstanceId(_ call: CAPPluginCall) {
-        
+
         DispatchQueue.main.async {
             let instanceId = Analytics.appInstanceID();
             call.success(["appInstanceId": instanceId])
         }
-        
+
     }
     @objc func resetAnalyticsData(_ call: CAPPluginCall) {
         DispatchQueue.main.async {

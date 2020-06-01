@@ -21,6 +21,10 @@ export class CapacitorFirebaseAnalyticsWeb extends WebPlugin implements Capacito
     return Promise.resolve();
   }
 
+  setAnalyticsCollectionEnabled(options: { enabled: boolean }) {
+    return Promise.resolve();
+  }
+
   setScreenName(options: { screenName: string, screenClassOverride: string }) {
     return Promise.resolve();
   }
