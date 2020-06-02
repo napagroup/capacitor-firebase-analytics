@@ -34,7 +34,7 @@ public class CapacitorFirebaseAnalytics extends Plugin {
     @PluginMethod()
     public void setAnalyticsCollectionEnabled(PluginCall call) {
         try {
-            final Boolean enabled = call.getBool("enabled");
+            final Boolean enabled = call.getBoolean("enabled");
             if (enabled != null) {
                 firebaseAnalytics.setAnalyticsCollectionEnabled(enabled);
                 call.success();
