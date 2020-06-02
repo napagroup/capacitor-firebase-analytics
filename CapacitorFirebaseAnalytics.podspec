@@ -1,7 +1,7 @@
 
   Pod::Spec.new do |s|
     s.name = 'CapacitorFirebaseAnalytics'
-    s.version = '0.3.7'
+    s.version = '0.3.8'
     s.summary = 'Capacitor plugin for ios and Android for using Firebase Analytics'
     s.license = 'MIT'
     s.homepage = 'https://github.com/philmerrell/capacitor-firebase-analytics.git'
