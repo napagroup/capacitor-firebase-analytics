@@ -32,6 +32,21 @@ public class CapacitorFirebaseAnalytics extends Plugin {
     }
 
     @PluginMethod()
+    public void setAnalyticsCollectionEnabled(PluginCall call) {
+        try {
+            final Boolean enabled = call.getBoolean("enabled");
+            if (enabled != null) {
+                firebaseAnalytics.setAnalyticsCollectionEnabled(enabled);
+                call.success();
+            } else {
+                call.reject("key 'enabled' does not exist");
+            }
+        } catch (Exception e) {
+            call.reject(e.getLocalizedMessage(), e);
+        }
+    }
+
+    @PluginMethod()
     public void setUserProperty(PluginCall call) throws JSONException {
         try {
             final String name = call.getString("name");

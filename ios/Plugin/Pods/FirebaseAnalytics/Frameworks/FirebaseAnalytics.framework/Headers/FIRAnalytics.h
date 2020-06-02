@@ -81,6 +81,13 @@ NS_SWIFT_NAME(Analytics)
 ///     non-empty and no more than 256 characters long. Setting userID to nil removes the user ID.
 + (void)setUserID:(nullable NSString *)userID;
 
+
+/// Sets the AnalyticsCollectionEnabled property. This feature must be used in accordance with
+/// <a href="https://www.google.com/policies/privacy">Google's Privacy Policy</a>
+///
+/// @param enabled  Setting AnalyticsCollectionEnabled .
++ (void)setAnalyticsCollectionEnabled:(nullable NSBoolean *)enabled;
+
 /// Sets the current screen name, which specifies the current visual context in your app. This helps
 /// identify the areas in your app where users spend their time and how they interact with your app.
 /// Must be called on the main thread.
