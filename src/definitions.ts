@@ -11,7 +11,6 @@ export interface CapacitorFirebaseAnalytics {
   setUserProperty(options: { value: string, name: string }): Promise<void>;
   setUserId(options: { userId: string }): Promise<void>;
   setAnalyticsCollectionEnabled(options: { enabled: boolean }): Promise<void>;
-
   setScreenName(options: { screenName: string, screenClassOverride?: string }): Promise<void>;
   appInstanceId(): Promise<{appInstanceId: string}>;
   resetAnalyticsData(): Promise<void>;

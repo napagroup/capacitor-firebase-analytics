@@ -1,9 +1,7 @@
-## This repo is looking for a good home. I no longer/never had the time to maintain it. Please create an issue if anyone is interested taking it over.
-
-[![npm version](https://badge.fury.io/js/capacitor-firebase-analytics.svg)](https://badge.fury.io/js/capacitor-firebase-analytics)
-
 # capacitor-firebase-analytics
 This is Firebase Analytics plugin for Capacitor.
+
+[![npm version](https://badge.fury.io/js/capacitor-firebase-analytics.svg)](https://badge.fury.io/js/capacitor-firebase-analytics)
 
 ## Installation
 
