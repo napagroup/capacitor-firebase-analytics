@@ -68,9 +68,9 @@ public class CapacitorFirebaseAnalytics: CAPPlugin {
     }
 
     @objc func setAnalyticsCollectionEnabled(_ call: CAPPluginCall) {
-        let enabled = call.getBool("enabled");
+        let enabled = (call.getBool("enabled") == true);
 
-        if userId != nil {
+        if enabled {
             DispatchQueue.main.async {
                 Analytics.setAnalyticsCollectionEnabled(enabled);
                 call.success();
@@ -80,7 +80,6 @@ public class CapacitorFirebaseAnalytics: CAPPlugin {
             self.bridge.modulePrint(self, "enabled was not passed.")
             return
         }
-
     }
 
     @objc func setUserId(_ call: CAPPluginCall) {
@@ -96,7 +95,6 @@ public class CapacitorFirebaseAnalytics: CAPPlugin {
             self.bridge.modulePrint(self, "A userId was not passed.")
             return
         }
-
     }
 
     @objc func appInstanceId(_ call: CAPPluginCall) {
