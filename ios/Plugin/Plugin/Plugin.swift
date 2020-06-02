@@ -68,7 +68,7 @@ public class CapacitorFirebaseAnalytics: CAPPlugin {
     }
 
     @objc func setAnalyticsCollectionEnabled(_ call: CAPPluginCall) {
-        let enabled = call.getBoolean("enabled");
+        let enabled = call.getBool("enabled");
 
         if userId != nil {
             DispatchQueue.main.async {
